@@ -6,22 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="favicon" href="{{ asset('favicon.ico') }}">
-    <title>Shoes</title>
+    <title>@yield('title')</title>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <header>
         <nav>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><img style="width:150px; border-radius:25%" src="{{ asset('images/logo.png') }}" alt=""></a></li>
-                <li class="nav-item"><a class="nav-link" href="">О нас</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('catalog') }}">Каталог</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Регистрация</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Авторизация</a></li>
+            <ul class="nav_menu">
+                <li class="nav_item"><a href="{{ route('home') }}" class="nav_link"><img style="width:150px; border-radius:25%" src="{{ asset('images/logo.png') }}" alt=""></a></li>
+                <li class="nav_item"><img class="nav_img" src="{{ asset('images/header/search-svgrepo-com.svg') }}" alt=""><input type="search" name="search" id=""></li>
+                @guest()
+                    <li class="nav_item"><a class="nav_link" href="{{ route('registerShow') }}">Регистрация </a><a class="nav_link" href="{{ route('loginShow') }}">/ Авторизация</a></li>
+                @endguest
+                @auth
+                    <li class="nav_item"><a class="nav_link" href="{{ route('logout') }}">Выйти</a></li>
+                @endauth
+                <li class="nav_item">
+                    <div class="dropdown">
+                    <a class="nav_link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Разделы сайта
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{{ asset('catalog') }}">Продукция и услуги</a></li>
+                      <li><a class="dropdown-item" href="#">О компании</a></li>
+                      <li><a class="dropdown-item" href="#">Стандарты качества</a></li>
+                      <li><a class="dropdown-item" href="#">Клиентам и партнерам</a></li>
+                      <li><a class="dropdown-item" href="#">Работа в компании</a></li>
+                      <li><a class="dropdown-item" href="#">Контакты</a></li>
+                      <li><a class="dropdown-item" href="#">Написать нам</a></li>
+                    </ul>
+                  </div></li>
+                <li class="nav_item d-flex"><img class="nav_img" src="{{ asset('images/header/russia.svg') }}" alt=""><a href="">RU</a><br><img class="nav_img ms-3" src="{{ asset('images/header/uk.svg') }}" alt=""><a href="">EN</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <div class="container">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+            @endif
             @yield('content')
         </div>
     </main>

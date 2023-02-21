@@ -3,7 +3,7 @@
 }
 
 a{
-    text-decoration: none;
+    text-decoration: none!important;
 }
 ul{
     list-style: none;
@@ -31,13 +31,20 @@ ul{
     }
   }
 
-
-.nav-menu{
+.video-wrapper{
+    position: relative;
+    text-align: center;
+}
+#video{
+    width: 66.66%;
+}
+.nav_menu{
     padding-top: 25px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-evenly;
 }
-.nav-link{
+.nav_link{
     font-family: var(--default-font);
     font-size: 24px;
     color:black;
@@ -71,4 +78,10 @@ ul{
     font-size: 20px;
     text-align: center;
 }
-
+.nav_img{
+    width: 15px;
+    margin-right: 10px
+}
+.detail-wrapper{
+    display: grid;
+}

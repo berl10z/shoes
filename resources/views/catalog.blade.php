@@ -1,14 +1,16 @@
 @extends('layouts.app')
-
+@section('title', 'Каталог')
 @section('content')
-    <section class="catalog">
+    <section class="catalog pt-5">
         <h2 class="title">Каталог</h2>
-        <div class="catalog-items">
+        <div class="catalog-items pt-5">
             @foreach ($products as $p)
-            <div class="catalog-item">
-                <p>{{ $p->name }}</p>
-                <img src="{{ $p->image }}" alt="">
-            </div>
+            <a href="{{ route('detail',$p->id) }}">
+                <div class="catalog-item">
+                    <p>{{ $p->name }}</p>
+                    <img src="{{ $p->image }}" alt="">
+                </div>
+            </a>
         @endforeach
         </div>
     </section>

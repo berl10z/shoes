@@ -2,14 +2,12 @@
 
 
 @section('content')
-<h2 class="title">Новинки</h2>
-<div class="latest-products">
-    @foreach ($products as $p)
-        <div class="latest-product">
-            <p>{{ $p->name }}</p>
-            <img src="{{ $p->image }}" alt="">
-        </div>
-    @endforeach
+
+<div class="video-wrapper">
+    <video autoplay muted loop id="video">
+        <source src="{{ asset('video.mp4') }}" type="video/mp4">
+    </video>
 </div>
+
 @endsection
 
