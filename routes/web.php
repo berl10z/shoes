@@ -35,7 +35,7 @@ Route::middleware('admin')->group(function(){
     Route::get('/catalog/{id}/delete',  [ProductController::class,'destroy'])->name('destroy');
 });
 
-
+Route::get('/search',[MainController::class,'search'])->name('search');
 
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 

@@ -14,7 +14,9 @@
         <nav>
             <ul class="nav_menu">
                 <li class="nav_item"><a href="{{ route('home') }}" class="nav_link"><img style="width:150px; border-radius:25%" src="{{ asset('images/logo.png') }}" alt=""></a></li>
+                <form method="get" action="{{route('search')}}">
                 <li class="nav_item"><img class="nav_img" src="{{ asset('images/header/search-svgrepo-com.svg') }}" alt=""><input type="search" name="search" id=""></li>
+                </form>
                 @guest()
                     <li class="nav_item"><a class="nav_link" href="{{ route('registerShow') }}">Регистрация </a><a class="nav_link" href="{{ route('loginShow') }}">/ Авторизация</a></li>
                 @endguest
