@@ -35,7 +35,8 @@
                       <li><a class="dropdown-item" href="#">Контакты</a></li>
                       <li><a class="dropdown-item" href="#">Написать нам</a></li>
                     </ul>
-                  </div></li>
+                  </div>
+                </li>
                 <li class="nav_item d-flex"><img class="nav_img" src="{{ asset('images/header/russia.svg') }}" alt=""><a href="">RU</a><br><img class="nav_img ms-3" src="{{ asset('images/header/uk.svg') }}" alt=""><a href="">EN</a></li>
             </ul>
         </nav>
@@ -52,6 +53,8 @@
             @yield('content')
         </div>
     </main>
+    <footer>
+    </footer>
     <script src="{{ asset('js/jquery-3.6.3.min.js') }}"></script>
 </body>
 </html>

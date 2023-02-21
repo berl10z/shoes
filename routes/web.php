@@ -16,14 +16,27 @@ use App\Http\Controllers\ProductController;
 */
 Route::get('/',[MainController::class,'index'])->name('home');
 // Route::get('/', [MainController::class,'showLatestProducts'])->name('home');
+Route::middleware('guest')->group(function(){
+    Route::get('/register',[AuthController::class,'registerShow'])->name('registerShow');
+    Route::post('/register_process',[AuthController::class,'register'])->name('register_process');
+    Route::get('/login',[AuthController::class,'loginShow'])->name('loginShow');
+    Route::post('/login_process',[AuthController::class,'login'])->name('login_process');
+});
+
+Route::get('/catalog', [ProductController::class,'index'])->name('catalog');
+
+Route::get('/catalog/{id}', [ProductController::class,'show'])->name('detail');
+
+Route::middleware('admin')->group(function(){
+    Route::get('/create', [ProductController::class,'create'])->name('create');
+
+    Route::post('/products',  [ProductController::class,'store'])->name('store');
+
+    Route::get('/catalog/{id}/delete',  [ProductController::class,'destroy'])->name('destroy');
+});
 
 
-Route::get('/register',[AuthController::class,'registerShow'])->name('registerShow');
-Route::post('/register_process',[AuthController::class,'register'])->name('register_process');
 
-Route::get('/login',[AuthController::class,'loginShow'])->name('loginShow');
-Route::post('/login_process',[AuthController::class,'login'])->name('login_process');
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
-Route::get('/catalog', [ProductController::class,'showCatalog'])->name('catalog');
-Route::get('/catalog/{id}', [ProductController::class,'show'])->name('detail');
+

@@ -16,4 +16,12 @@ class MainController extends Controller
         $products = Product::latest()->take(5)->get();
         return view('index', compact('products'));
     }
+    public function search(Request $request) {
+        $data = $request->validate([
+            'search' => ['required', 'string', 'min:3']
+        ]);
+        $search = $request->search;
+        $products = Product::where('name','like',"%" . $search . "%")->orderBy('name')->paginate(10);
+        return view('catalog', compact('products'));
+    }
 }
