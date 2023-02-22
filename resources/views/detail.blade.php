@@ -7,9 +7,12 @@
         <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}" class="img-fluid">
       </div>
       <div class="col-md-8">
-        <h1 class="mb-3">{{ $product->name }}</h1>
-        <p>{{ $product->desc }}</p>
-        <button type="submit"><a href="{{ route('destroy',$product->id) }}">Удалить</a></button>
+        <h1 class="mb-3">Наименование: {{ $product->name }}</h1>
+        <p>Описание: {{ $product->description }}</p>
+        <p>Цена: {{ $product->price }}</p>
+        @if(auth()->check() && auth()->user()->is_admin)
+            <button class="btn btn-danger" type="submit"><a class="text-white" href="{{ route('destroy',$product->id) }}">Удалить</a></button>
+        @endif
       </div>
     </div>
   </div>

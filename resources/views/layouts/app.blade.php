@@ -20,9 +20,6 @@
                 @guest()
                     <li class="nav_item"><a class="nav_link" href="{{ route('registerShow') }}">Регистрация </a><a class="nav_link" href="{{ route('loginShow') }}">/ Авторизация</a></li>
                 @endguest
-                @auth
-                    <li class="nav_item"><a class="nav_link" href="{{ route('logout') }}">Выйти</a></li>
-                @endauth
                 <li class="nav_item">
                     <div class="dropdown">
                     <a class="nav_link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,6 +36,9 @@
                     </ul>
                   </div>
                 </li>
+                @auth
+                <li class="nav_item"><a class="nav_link" href="{{ route('logout') }}">Выйти</a></li>
+                @endauth
                 <li class="nav_item d-flex"><img class="nav_img" src="{{ asset('images/header/russia.svg') }}" alt=""><a href="">RU</a><br><img class="nav_img ms-3" src="{{ asset('images/header/uk.svg') }}" alt=""><a href="">EN</a></li>
             </ul>
         </nav>

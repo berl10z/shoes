@@ -7,7 +7,7 @@
                 <h2>Добавить новый продукт</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="#"> Назад</a>
+                <a class="btn btn-primary" href="{{ route('admin') }}"> Назад</a>
             </div>
         </div>
     </div>
@@ -32,10 +32,10 @@
                     <input type="text" name="name" class="form-control" placeholder="Имя">
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 mt-5 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Картинка: </strong>
-                    <input type="file" name="image" id="">
+                    <input type="file" name="image" id="" required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -47,7 +47,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Цена:</strong>
-                    <input type="text" name="price" class="form-control" placeholder="Цена">
+                    <input type="text" name="price" class="form-control" id="price" required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

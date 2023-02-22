@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
@@ -28,11 +29,12 @@ Route::get('/catalog', [ProductController::class,'index'])->name('catalog');
 Route::get('/catalog/{id}', [ProductController::class,'show'])->name('detail');
 
 Route::middleware('admin')->group(function(){
-    Route::get('/create', [ProductController::class,'create'])->name('create');
+    Route::get('/admin', [AdminController::class,'index'])->name('admin');
+    Route::get('/create', [AdminController::class,'create'])->name('create');
 
-    Route::post('/products',  [ProductController::class,'store'])->name('store');
+    Route::post('/products',  [AdminController::class,'store'])->name('store');
 
-    Route::get('/catalog/{id}/delete',  [ProductController::class,'destroy'])->name('destroy');
+    Route::get('/catalog/{id}/delete',  [AdminController::class,'destroy'])->name('destroy');
 });
 
 Route::get('/search',[MainController::class,'search'])->name('search');
