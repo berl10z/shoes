@@ -23,7 +23,10 @@
                 <td><img src="{{ asset('storage/'.$p['product']['image']) }}" alt="{{ $p['product']['name'] }}" style="max-width: 250px; max-height:250px;"></td>
                 <td>{{ $p['product']['price'] }}</td>
                 <td>{{ $p['qty'] }}</td>
-                <td><a href="{{ route('deleteFromCart',$p['product']['id']) }}" class="btn btn-danger">Удалить</a></td>
+                <td>
+                    <a href="{{ route('deleteFromCart',$p['product']['id']) }}" class="btn btn-danger">Удалить</a>
+                    <a class="btn btn-primary text-center" href="{{ route('addToCart',$p['product']['id'] )}}">Добавить еще</a>
+                </td>
             </tr>
         @endforeach
     </tbody>
