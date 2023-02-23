@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title','Создание продукта')
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
@@ -26,28 +26,29 @@
     <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 my-3 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Имя:</strong>
                     <input type="text" name="name" class="form-control" placeholder="Имя">
                 </div>
             </div>
-            <div class="col-xs-12 mt-5 col-sm-12 col-md-12">
+            <div class="col-xs-12 my-3 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Картинка: </strong>
+                    <br>
                     <input type="file" name="image" id="" required>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 my-3 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>Описание:</strong>
+                    <strong class="mb-3 ">Описание:</strong>
                     <textarea class="form-control" style="height:150px" name="description" placeholder="описание"></textarea>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-12 my-3 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Цена:</strong>
-                    <input type="text" name="price" class="form-control" id="price" required>
+                    <input min="0" type="number" step="100" name="price" class="form-control" id="price" required>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

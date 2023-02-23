@@ -36,6 +36,9 @@
                     </ul>
                   </div>
                 </li>
+                @if(auth()->check() && auth()->user()->is_admin)
+                <li class="nav_item"><a class="nav_link" href="{{ route('admin') }}">Админ-панель</a></li>
+                @endif
                 @auth
                 <li class="nav_item"><a class="nav_link" href="{{ route('logout') }}">Выйти</a></li>
                 @endauth

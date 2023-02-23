@@ -8,7 +8,7 @@
             <a href="{{ route('detail',$p->id) }}">
                 <div class="catalog-item">
                     <p>{{ $p->name }}</p>
-                    <img src="{{ asset('storage/'.$p->image) }}" alt="{{ $p->name }}" style="max-width: 200px;">
+                    <img src="{{ asset('storage/'.$p->image) }}" alt="{{ $p->name }}" style="max-width: 250px; max-height:250px;">
                 </div>
             </a>
         @endforeach

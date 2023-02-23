@@ -26,7 +26,7 @@ class AdminController extends Controller
 
         $img = $r->file('image');
 
-        $imgPath = $img->store('images',['disk' => 'public']);
+        $imgPath = $img->store('images', ['disk' => 'public']);
 
         $product = Product::create([
             'name' => $r->input('name'),
@@ -35,7 +35,36 @@ class AdminController extends Controller
             'price' => $r->input('price'),
         ]);
 
-        return to_route('admin');
+        return to_route('admin')->with('success', 'Продукт успешно добавлен');;
+    }
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('admin.edit',compact('product'));
+    }
+    public function update(Request $r, $id)
+    {
+        $r->validate([
+            'name' => 'required|string',
+            'description' => 'required',
+            'price' => 'required',
+        ]);
+
+        $product = Product::findOrFail($id);
+
+        $product->name = $r->input('name');
+        $product->description = $r->input('description');
+        $product->price = $r->input('price');
+
+        if ($r->hasFile('image')) {
+            $img = $r->file('image');
+            $imgPath = $img->store('images', ['disk' => 'public']);
+            $product->image = $imgPath;
+        }
+
+        $product->save();
+
+        return to_route('admin')->with('success', 'Продукт успешно обновлен');
     }
     public function destroy($id)
     {
@@ -43,5 +72,4 @@ class AdminController extends Controller
 
         return to_route('admin');
     }
-
 }

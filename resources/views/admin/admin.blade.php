@@ -24,9 +24,9 @@
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->price }}</td>
                 <td>
-                    <a href="{{ route('detail',$product->id) }}" class="btn btn-primary">View</a>
-                    <a href="#" class="btn btn-secondary">Edit</a>
-                    <a href="{{ route('destroy',$product->id) }}" type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Delete</a>
+                    <a href="{{ route('detail',$product->id) }}" class="btn btn-primary">Подробнее</a>
+                    <a href="{{ route('edit',$product->id) }}" class="btn btn-secondary">Изменить</a>
+                    <a href="{{ route('destroy',$product->id) }}" type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this product?')">Удалить</a>
                     </form>
                 </td>
             </tr>

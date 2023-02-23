@@ -30,12 +30,13 @@ Route::get('/catalog/{id}', [ProductController::class,'show'])->name('detail');
 
 Route::middleware('admin')->group(function(){
     Route::get('/admin', [AdminController::class,'index'])->name('admin');
+    Route::get('/catalog/{product}/edit', [AdminController::class,'edit'])->name('edit');
+    Route::put('/catalog/{product}', [AdminController::class,'update'])->name('update');
     Route::get('/create', [AdminController::class,'create'])->name('create');
-
-    Route::post('/products',  [AdminController::class,'store'])->name('store');
-
+    Route::post('/catalog/store',  [AdminController::class,'store'])->name('store');
     Route::get('/catalog/{id}/delete',  [AdminController::class,'destroy'])->name('destroy');
 });
+
 
 Route::get('/search',[MainController::class,'search'])->name('search');
 
