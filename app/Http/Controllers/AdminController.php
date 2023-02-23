@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class AdminController extends Controller
     }
     public function create()
     {
-        return view('admin.create');
+        $categories = Category::all();
+        return view('admin.create', compact('categories'));
     }
     public function store(Request $r)
     {
@@ -22,6 +24,8 @@ class AdminController extends Controller
             'name' => 'required|string',
             'description' => 'required',
             'price' => 'required',
+            'count' =>'required',
+            'category' => 'required'
         ]);
 
         $img = $r->file('image');
@@ -33,14 +37,17 @@ class AdminController extends Controller
             'description' => $r->input('description'),
             'image' => $imgPath,
             'price' => $r->input('price'),
+            'count' => $r->input('count'),
+            'category_id' => $r->input('category')
         ]);
 
-        return to_route('admin')->with('success', 'Продукт успешно добавлен');;
+        return to_route('admin')->with('success', 'Продукт '.$product->name.' успешно добавлен');;
     }
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view('admin.edit',compact('product'));
+        $categories = Category::all();
+        return view('admin.edit',compact('product','categories'));
     }
     public function update(Request $r, $id)
     {
@@ -48,6 +55,8 @@ class AdminController extends Controller
             'name' => 'required|string',
             'description' => 'required',
             'price' => 'required',
+            'count' => 'required',
+            'category' => 'required'
         ]);
 
         $product = Product::findOrFail($id);
@@ -55,6 +64,8 @@ class AdminController extends Controller
         $product->name = $r->input('name');
         $product->description = $r->input('description');
         $product->price = $r->input('price');
+        $product->count = $r->input('count');
+        $product->category_id = $r->input('category');
 
         if ($r->hasFile('image')) {
             $img = $r->file('image');

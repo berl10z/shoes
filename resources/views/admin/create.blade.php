@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <strong>Картинка: </strong>
                     <br>
-                    <input type="file" name="image" id="" required>
+                    <input class="form-control" type="file" name="image" id="" required>
                 </div>
             </div>
             <div class="col-xs-12 my-3 col-sm-12 col-md-12">
@@ -47,8 +47,25 @@
             </div>
             <div class="col-xs-12 my-3 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong class="mb-3 ">Количество</strong>
+                    <input type="number" min="0" class="form-control" name="count" placeholder="кол-во">
+                </div>
+            </div>
+            <div class="col-xs-12 my-3 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>Цена:</strong>
-                    <input min="0" type="number" step="100" name="price" class="form-control" id="price" required>
+                    <input min="0" placeholder="0" type="number" step="1" name="price" class="form-control" id="price" required>
+                </div>
+            </div>
+            <div class="col-xs-12 my-3 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong class="mb-3">Категория</strong>
+                    <select class="form-select" name="category" id="">
+                        <option value="0" disabled selected>Выберите категорию</option>
+                        @foreach ($categories as $c)
+                            <option value="{{ $c->id }}">{{ $c->name }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

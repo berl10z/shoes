@@ -4,7 +4,9 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,22 +26,24 @@ Route::middleware('guest')->group(function(){
     Route::post('/login_process',[AuthController::class,'login'])->name('login_process');
 });
 
-Route::get('/catalog', [ProductController::class,'index'])->name('catalog');
+Route::get('/cart/{id}',[CartController::class,'addToCart'])->name('addToCart');
+Route::get('/cart',[CartController::class,'index'])->name('cartPage');
+Route::get('/cart/{id}/delete',[CartController::class,'deleteFromCart'])->name('deleteFromCart');
 
+Route::get('/catalog', [CategoryController::class,'index'])->name('catalog');
+Route::get('{category_slug}/products/', [ProductController::class,'index'])->name('products');
 Route::get('/catalog/{id}', [ProductController::class,'show'])->name('detail');
 
-Route::middleware('admin')->group(function(){
-    Route::get('/admin', [AdminController::class,'index'])->name('admin');
-    Route::get('/catalog/{product}/edit', [AdminController::class,'edit'])->name('edit');
-    Route::put('/catalog/{product}', [AdminController::class,'update'])->name('update');
-    Route::get('/create', [AdminController::class,'create'])->name('create');
-    Route::post('/catalog/store',  [AdminController::class,'store'])->name('store');
-    Route::get('/catalog/{id}/delete',  [AdminController::class,'destroy'])->name('destroy');
+Route::middleware('admin')->prefix('admin/')->group(function(){
+    Route::get('/', [AdminController::class,'index'])->name('admin');
+    Route::get('/product/{product}/edit', [AdminController::class,'edit'])->name('edit');
+    Route::put('/product/{product}', [AdminController::class,'update'])->name('update');
+    Route::get('/product/create', [AdminController::class,'create'])->name('create');
+    Route::post('/product/store',  [AdminController::class,'store'])->name('store');
+    Route::get('/product/{id}/delete',  [AdminController::class,'destroy'])->name('destroy');
 });
 
-
 Route::get('/search',[MainController::class,'search'])->name('search');
-
 Route::get('/logout',[AuthController::class,'logout'])->name('logout');
 
 

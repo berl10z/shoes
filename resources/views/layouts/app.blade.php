@@ -14,8 +14,9 @@
         <nav>
             <ul class="nav_menu">
                 <li class="nav_item"><a href="{{ route('home') }}" class="nav_link"><img style="width:150px; border-radius:25%" src="{{ asset('images/logo.png') }}" alt=""></a></li>
-                <form method="get" action="{{route('search')}}">
-                <li class="nav_item"><img class="nav_img" src="{{ asset('images/header/search-svgrepo-com.svg') }}" alt=""><input type="search" name="search" id=""></li>
+                <form class="d-flex" method="get" action="{{route('search')}}">
+                    <button class="btn" type="submit"><img class="nav_img" src="{{ asset('images/header/search-svgrepo-com.svg') }}" alt=""></button>
+                    <input class="form-control @error('search') is-invalid @enderror" type="search" name="search" id="">
                 </form>
                 @guest()
                     <li class="nav_item"><a class="nav_link" href="{{ route('registerShow') }}">Регистрация </a><a class="nav_link" href="{{ route('loginShow') }}">/ Авторизация</a></li>
@@ -28,7 +29,7 @@
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="{{ asset('catalog') }}">Продукция и услуги</a></li>
                       <li><a class="dropdown-item" href="#">О компании</a></li>
-                      <li><a class="dropdown-item" href="#">Стандарты качества</a></li>
+                      <li><a class="dropdown-item" href="{{ route('cartPage') }}">Корзина</a></li>
                       <li><a class="dropdown-item" href="#">Клиентам и партнерам</a></li>
                       <li><a class="dropdown-item" href="#">Работа в компании</a></li>
                       <li><a class="dropdown-item" href="#">Контакты</a></li>

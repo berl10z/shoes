@@ -22,6 +22,6 @@ class MainController extends Controller
         ]);
         $search = $request->search;
         $products = Product::where('name','like',"%" . $search . "%")->orderBy('name')->paginate(10);
-        return view('catalog', compact('products'));
+        return view('products', compact('products'));
     }
 }

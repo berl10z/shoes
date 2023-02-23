@@ -7,12 +7,19 @@
             <tr>
                 <th>Product</th>
                 <th>Name</th>
+                <th>Category</th>
                 <th>Description</th>
+                <th>Count</th>
                 <th>Price</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
+            @if (session()->has('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
             @foreach($products as $product)
             <tr>
                 <td>
@@ -21,7 +28,9 @@
                     </div>
                 </td>
                 <td>{{ $product->name }}</td>
+                <td>{{ $product->category->name}}</td>
                 <td>{{ $product->description }}</td>
+                <td>{{ $product->count }}</td>
                 <td>{{ $product->price }}</td>
                 <td>
                     <a href="{{ route('detail',$product->id) }}" class="btn btn-primary">Подробнее</a>
@@ -33,6 +42,6 @@
             @endforeach
         </tbody>
     </table>
-    <a class="btn btn-success" href="{{ 'create' }}">Добавить продукт</a>
+    <a class="btn btn-success" href="{{ route('create') }}">Добавить продукт</a>
 </section>
 @endsection
