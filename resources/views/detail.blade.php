@@ -14,6 +14,7 @@
                     <a class="btn btn-danger" href="{{ route('destroy', $product->id) }}">Удалить</a>
                     <a class="btn btn-primary text-white" href="{{ route('edit', $product->id) }}">Изменить</a>
                 @endif
+                <a class="btn btn-primary text-center" href="{{ route('addToCart',$product->id) }}">В корзину</a>
             </div>
         </div>
     </div>

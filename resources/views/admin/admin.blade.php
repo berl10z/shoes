@@ -5,13 +5,13 @@
     <table class="table table-responsive">
         <thead>
             <tr>
-                <th>Product</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Count</th>
-                <th>Price</th>
-                <th>Actions</th>
+                <th>Продукт</th>
+                <th>Имя</th>
+                <th>Категория</th>
+                <th>Описание</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Действия</th>
             </tr>
         </thead>
         <tbody>

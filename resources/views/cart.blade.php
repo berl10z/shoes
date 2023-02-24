@@ -9,10 +9,11 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Price</th>
-            <th>Quantity</th>
+            <th>Имя</th>
+            <th>Изображение</th>
+            <th>Цена</th>
+            <th>Кол-во</th>
+            <th>Действия</th>
         </tr>
     </thead>
     <tbody>

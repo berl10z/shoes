@@ -54,14 +54,7 @@ ul{
     text-align: center;
     font-size: 32px;
 }
-.catalog-items{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    gap: 1rem;
-    justify-items: center;
-}
-.catalog-item img, .latest-product img{
+.catalog-item img{
     width: 250px;
 }
 

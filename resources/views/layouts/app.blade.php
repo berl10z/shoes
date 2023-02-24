@@ -28,12 +28,7 @@
                     </a>
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="{{ asset('catalog') }}">Продукция и услуги</a></li>
-                      <li><a class="dropdown-item" href="#">О компании</a></li>
                       <li><a class="dropdown-item" href="{{ route('cartPage') }}">Корзина</a></li>
-                      <li><a class="dropdown-item" href="#">Клиентам и партнерам</a></li>
-                      <li><a class="dropdown-item" href="#">Работа в компании</a></li>
-                      <li><a class="dropdown-item" href="#">Контакты</a></li>
-                      <li><a class="dropdown-item" href="#">Написать нам</a></li>
                     </ul>
                   </div>
                 </li>
