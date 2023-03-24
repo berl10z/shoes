@@ -44,4 +44,5 @@
     </table>
     <a class="btn btn-success" href="{{ route('create') }}">Добавить продукт</a>
 </section>
+{{ $products->links() }}
 @endsection

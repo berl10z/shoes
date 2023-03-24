@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::paginate(5);
         return view('admin.admin', compact('products'));
     }
     public function create()

@@ -27,7 +27,7 @@
             @endforelse
         </div>
         <div class="d-flex flex-row">
-            {{ $products->links() }}
+            {{ $products->appends(['search' => $search])->links() }}
         </div>
     </section>
 @endsection
